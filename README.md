@@ -39,7 +39,7 @@ Execute the scripts in the following order:
 - `r_inst_code.r`: Compute the instantaneous reproduction number
 
 ### Step 5: Visualization
-- Code for generating figures and tables (specific files to be added)
+- `Fig_*.r`, `Table_*.r`: Code for generating figures and tables
 
 ## System Requirements
 
