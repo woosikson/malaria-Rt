@@ -1,0 +1,46 @@
+library(tidyverse)
+library(data.table)
+library(doMC)
+library(parallel)
+
+registerDoMC(cores = detectCores())
+
+dn <- 'processed/SI_backward_Gyeonggi/'
+ls <- list.files(dn)
+
+si.dist <- foreach(ind = 1:length(ls)) %dopar% {
+  
+  str.1 <- str_split(string = ls[ind], pattern = '[.]') %>% unlist
+  date <- str.1[1]
+  
+  fn <- paste0(dn, ls[ind])
+  load(fn)
+  
+  dt.t.01234 <- dt.t.01234[!is.na(t.0), ] # removing rows such as t.0 = NA
+  
+  # Although we placed restrictions when sampling t.1 from t.0 
+  # to ensure t.3 falls within weeks 14-44,
+  # when t.2 is sampled from t.1, due to the following variability (t.1 - t.2 = 0 ~ 6 day),
+  # t.3 may fall outside weeks 14-44.
+  # Let's remove these cases.
+  
+  dt.t.01234[, ':=' (t.1.week = as.integer(strftime(t.1, format = '%V')) - 1,
+                     t.3.week = as.integer(strftime(t.3, format = '%V')) - 1)]
+  
+  dt.1 <- dt.t.01234[14 <= t.3.week & t.3.week <= 44 &
+                       14 <= t.1.week & t.1.week <= 44, ]
+  
+  dt.1[, ':=' (si_week = round(as.integer(t.0 - t.4)/7))]
+  
+  dt.si.dist <- dt.1[, .N, by = .(si_week)][order(si_week)]
+  dt.si.dist[, ':=' (prob = N/sum(N))]
+  
+  return(list(date = date,
+              si.dist = dt.si.dist))
+  
+}
+
+dn <- 'processed/'
+
+fn <- paste0(dn, 'Gyeonggi_backward_infectee_si.dist.RData')
+save(si.dist, file = fn)
