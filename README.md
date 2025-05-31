@@ -8,11 +8,11 @@ The original analysis in the paper was conducted using malaria symptom onset dat
 
 ## Data Files
 
-- `malaria_kdca.csv`: Regional/weekly malaria confirmed case time series (Source: Korea Disease Control and Prevention Agency)
-- `Gyeonggi_mos_on_off.csv`: Daily time series of malaria vector mosquito presence (on/off) in Gyeonggi region  
-- `Incheon_mos_on_off.csv`: Daily time series of malaria vector mosquito presence (on/off) in Incheon region
-- `Gyeonngi_temp.csv`: Daily temperature time series for Gyeonggi region
-- `Incheon_temp.csv`: Daily temperature time series for Incheon region
+- `input/malaria_kdca.csv`: Regional/weekly malaria confirmed case time series (Source: Korea Disease Control and Prevention Agency)
+- `input/Gyeonggi_mos_on_off.csv`: Daily time series of malaria vector mosquito presence (on/off) in Gyeonggi region  
+- `input/Incheon_mos_on_off.csv`: Daily time series of malaria vector mosquito presence (on/off) in Incheon region
+- `input/Gyeonngi_temp.csv`: Daily temperature time series for Gyeonggi region
+- `input/Incheon_temp.csv`: Daily temperature time series for Incheon region
 
 ## Code Structure
 
