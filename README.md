@@ -4,7 +4,7 @@ This repository contains the code and data used to produce the results presented
 
 ## Data Availability Notice
 
-The original analysis in the paper was conducted using malaria symptom onset data from South Korea, which is confidential and cannot be publicly shared. Instead, this repository provides publicly available malaria confirmed case data from the Korea Disease Control and Prevention Agency (KDCA). While there are minor differences between symptom onset dates and confirmation dates, the overall results and conclusions remain consistent with those reported in the paper.
+The original analysis in the paper was conducted using malaria symptom onset data from South Korea, which is confidential and cannot be publicly shared. Instead, this repository provides publicly available malaria confirmed case data from the Korea Disease Control and Prevention Agency (KDCA). While there are differences between symptom onset dates and confirmation dates, the overall results and conclusions remain consistent with those reported in the paper.
 
 ## Data Files
 
